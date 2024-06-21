@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATPIA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #F5F5F5;
+            padding: 20px;
+        }
+        header img {
+            height: 50px;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            margin-top: 40px;
+        }
+        .content div {
+            width: 30%;
+            padding: 20px;
+        }
+        .content div p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .cat-door {
+            width: 40%;
+            border: 2px solid #888;
+            border-radius: 50% 50% 0 0;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="cat_logo.png" alt="CATPIA">
+    </header>
+    <nav>
+        <a href="#">關於貓洞</a>
+        <a href="#">互動須知</a>
+        <a href="#">附近的貓</a>
+        <a href="#">尋找小貓</a>
+    </nav>
+    <div class="buttons">
+        <button>註冊</button>
+        <button>會員登入</button>
+    </div>
+    <div class="content">
+        <div>
+            <p>我們從人類的世界中來到這裡<br>成為漫遊者</p>
+        </div>
+        <div class="cat-door"></div>
+        <div>
+            <p>我們選擇進入貓咪模式<br>與所有貓為伍<br>站在貓的一方<br>亦或是成為貓</p>
+        </div>
+    </div>
+</body>
+</html>

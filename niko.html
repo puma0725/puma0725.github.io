@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CATOPEA 貓洞</title>
+    <title>NIKO - CATOPEA 貓洞</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>
         .navbar {
             border-top: 3px solid #ccc;
@@ -16,7 +17,6 @@
             margin-right: 60px;
             top: 100px;
             font-weight: bold;
-
         }
 
         .navbar-nav {
@@ -62,36 +62,49 @@
             color: #fff;
         }
 
-        .card {
-            border: 0px
+        .content {
+            padding: 60px;
         }
 
-        .card-img-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            margin-bottom: 10px;
-            height: 450px;
-        }
-
-        .card-img-container img {
+        .cat-img {
             max-width: 100%;
+            height: 100%;
             border-radius: 200px 200px 25px 25px;
-            border: 3px solid #ccc;
         }
 
-        .text-center {
-            text-align: center;
-            font-weight: bold;
+        .cat-description {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            margin-top: 20px;
         }
 
-        body {
-            color: #666;
-            background-color: #FAF9F6;
+        .cat-tags {
+            margin-top: 20px;
         }
 
-        .container-fluid.text-white {
+        .cat-tags .badge {
+            margin-right: 10px;
+            font-size: 1em;
+        }
+
+        .footer {
             background-color: #666;
+            color: white;
+            padding: 20px 60px;
+        }
+
+        .content {
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+
+        .cat-description {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            margin-top: 20px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #999;
         }
     </style>
 </head>
@@ -152,71 +165,97 @@
         </div>
     </nav>
 
-    <div class="container my-5">
+    <div class="container content mt-2">
         <div class="row">
-            <div class="col-lg-2">
-                <div class="card1">
-                    <div class="card-img-container">
-                        <img src="recommend1.png" class="card-img-top" alt="...">
-                    </div>
-                </div>
+            <div class="col-md-6 text-center">
+                <img src="niko.jpg" alt="NIKO" class="cat-img" id="catImage">
             </div>
-            <div class="col-lg-2">
-                <div class="card1">
-                    <div class="card-img-container">
-                        <img src="recommend2.png" class="card-img-top" alt="...">
-                    </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <h1 id="catName">NIKO</h1>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card1">
-                    <div class="card-img-container">
-                        <img src="recommend3.png" class="card-img-top" alt="...">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="card1">
-                    <div class="card-img-container">
-                        <img src="recommend4.png" class="card-img-top" alt="...">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="card1">
-                    <div class="card-img-container">
-                        <img src="recommend5.png" class="card-img-top" alt="...">
+                <div class="cat-description" id="catDescription">
+                    <p>
+                        NIKO 是一位生活在街頭巷弄的冒險者。牠的被毛或許有些凌亂，但這正是一種獨特的美。<br><br>
+                        這隻流浪貓不拘小節，經常在城市的各個角落探險，尋找美食和溫暖的角落。夜晚，你可能會在巷弄口見到 NIKO 悠閒地打盹睡，或者在垃圾桶旁尋找一些可口的食物。
+                    </p>
+                    <div class="cat-tags" id="catTags">
+                        <span class="badge bg-secondary">可餵食</span>
+                        <span class="badge bg-secondary">冒險者</span>
+                        <span class="badge bg-secondary">三花</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col">
-                <div class="text-center"> 
-                    <h2>來認識新的貓咪吧</h2>
-                </div>
-                <p>我們從人類的世界中來到這裡
-                    成為漫遊者.
-                    選擇進入貓咪模式
-                    與所有貓為伍
-                    站在貓的一方
-                    亦或是成為貓</p>
+        <div class="row mt-3">
+            <div class="col-md-6 text-end">
+                <button class="btn btn-secondary" onclick="prevCat()">上一位貓咪</button>
             </div>
-            <div class="col-2"></div>
+            <div class="col-md-6">
+                <button class="btn btn-secondary" onclick="nextCat()">下一位貓咪</button>
+            </div>
         </div>
     </div>
 
-    <div class="container-fluid bg-dark text-white py-5">
+    <script>
+        const cats = [
+            {
+                name: "NIKO",
+                image: "niko.jpg",
+                description: "NIKO 是一位生活在街頭巷弄的冒險者。牠的被毛或許有些凌亂，但這正是一種獨特的美。<br><br>這隻流浪貓不拘小節，經常在城市的各個角落探險，尋找美食和溫暖的角落。夜晚，你可能會在巷弄口見到 NIKO 悠閒地打盹睡，或者在垃圾桶旁尋找一些可口的食物。",
+                tags: ["可餵食", "冒險者", "三花"]
+            },
+            {
+                name: "MILO",
+                image: "milo.jpg",
+                description: "MILO 是一隻擁有迷人眼睛的小貓。牠喜歡追逐蝴蝶和躲貓貓遊戲，每天都帶來無窮的歡樂。<br><br>MILO 是這裡的陽光，總是能在陰雨天帶給你溫暖和笑容。",
+                tags: ["愛追逐", "可愛", "喜歡玩"]
+            },
+            {
+                name: "LUNA",
+                image: "luna.jpg",
+                description: "LUNA 是一位體貼的姐姐，經常照顧其他貓咪。牠的溫柔和善良讓每一位路過的人都忍不住想要摸一摸。<br><br>在你需要安慰和陪伴的時候，LUNA 總是在你身邊。",
+                tags: ["溫柔", "體貼", "姐姐"]
+            }
+        ];
+
+        let currentCatIndex = 0;
+
+        showCat(currentCatIndex);
+
+        function showCat(index) {
+            const cat = cats[index];
+            document.getElementById('catImage').src = cat.image;
+            document.getElementById('catName').innerHTML = cat.name;
+            document.getElementById('catDescription').innerHTML = `<p>${cat.description}</p>`;
+
+            let tagsHTML = "";
+            cat.tags.forEach(tag => {
+                tagsHTML += `<span class="badge bg-secondary">${tag}</span>`;
+            });
+            document.getElementById('catTags').innerHTML = tagsHTML;
+        }
+
+        function prevCat() {
+            currentCatIndex = (currentCatIndex - 1 + cats.length) % cats.length;
+            showCat(currentCatIndex);
+        }
+
+        function nextCat() {
+            currentCatIndex = (currentCatIndex + 1) % cats.length;
+            showCat(currentCatIndex);
+        }
+    </script>
+
+
+
+
+    <div class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-4">
                     <h5>CATOPEA</h5>
-                    <p>tel. 2222222222<br>
-                        email. CATOPEA@gmail.com</p>
+                    <p>tel. 2222222222<br>email. CATOPEA@gmail.com</p>
                 </div>
             </div>
         </div>
