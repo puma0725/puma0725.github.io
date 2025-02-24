@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>危鳥現場</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="loading"></div>
-        <div class="start start-1"></div>
-        <div class="start start-2"></div>
+        <div class="start start-1">
+            <div class="start-btn start-1-btn">
+                <img src="images/button2.png" alt="" class="img-fluid">
+            </div>
+        </div>
+        <div class="start start-2">
+            <div class="start-btn start-2-btn">
+                <img src="images/button3.png" alt="" class="img-fluid">
+            </div>
+        </div>
         <div class="game">
             <div class="header">
                 <img src="images/header.png" class="img-fluid" alt="">
@@ -34,9 +44,26 @@
                 <img src="images/mon-1.png" class="img-fluid" alt="">
             </div>
         </div>
+        <div class="final win">
+            <div class="final-img">
+                <img src="images/win.png" class="img-fluid" alt="">
+                <div class="win-btn restart-btn">
+                    <img src="images/button4.png" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="final lose">
+            <div class="final-img">
+                <img src="images/lose-1.png" class="img-fluid" alt="">
+                <div class="lose-btn restart-btn">
+                    <img src="images/button4.png" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="common.js"></script>
 </body>
+
 </html>

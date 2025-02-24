@@ -10,16 +10,18 @@ $(window).on('load', function () { // 網頁讀取完畢後
 $(function () {
     let gameRunning = false, // 啟動遊戲變數
         monMove = true, // 怪物移動變數
-        windowHalfHeight = $(window).height() / 2 - 50, // 整個畫面高度的一半
-        windowHalfWidth = $(window).width() / 2 - 50, // 整個畫面寬度的一半
-        windowHalfHeight1 = $(window).height() / 2 - 60, // 整個畫面高度的一半
-        windowHalfWidth1 = $(window).width() / 2 - 60, // 整個畫面寬度的一半
-        windowHalfHeight2 = $(window).height() / 2 - 40, // 整個畫面高度的一半
-        windowHalfWidth2 = $(window).width() / 2 - 40, // 整個畫面寬度的一半
+        windowHalfHeight = ($(window).height() / 2) + 'px', // 整個畫面高度的一半
+        windowHalfWidth = ($(window).width() / 2) + 'px', // 整個畫面寬度的一半
+        windowHalfHeight1 = ($(window).height() / 2 + 10) + 'px', // 整個畫面高度的一半
+        windowHalfWidth1 = ($(window).width() / 2 + 10) + 'px', // 整個畫面寬度的一半
+        windowHalfHeight2 = ($(window).height() / 2 - 10) + 'px', // 整個畫面高度的一半
+        windowHalfWidth2 = ($(window).width() / 2 - 10) + 'px', // 整個畫面寬度的一半
         mon1, // 怪物編號變數
         mon2,
         mon3,
         mon4,
+        src,
+        final,
         score = 0; // 分數
 
     // 一開始隱藏幾個畫面
@@ -62,7 +64,7 @@ $(function () {
             // Monster
             $('.mon-1').css({
                 'left': leftTop + '%',
-                'top': '-10%',
+                'top': '-100px',
             })
             $('.mon-1').animate({
                 'left': '50%',
@@ -103,7 +105,7 @@ $(function () {
             $('.mon-2').show();
             // Monster
             $('.mon-2').css({
-                'left': '-10%',
+                'left': '-100px',
                 'top': topLeft + '%',
             })
             $('.mon-2').animate({
@@ -135,67 +137,64 @@ $(function () {
             setTimeout(monRight, 2000) // 每2000ms跑一個出來
         }
 
-        setInterval(function () {
-            let monY = $('.mon-y').offset().top; // 縱著跑的怪物
-            if (monY > windowHalfHeight1 && monY < windowHalfHeight2) { //當怪物跑到中間的時候
-                monMove = false; // 怪物移動變數為假
-                gameRunning = false;
-                src = $('.mon-y img').attr('src');
-                if (src == 'images/mon-1.png') {
-                    final = 1;
-                } else if (src == 'images/mon-2.png') {
-                    final = 2;
-                } else if (src == 'images/mon-3.png') {
-                    final = 3;
-                } else if (src == 'images/mon-4.png') {
-                    final = 4;
-                } else if (src == 'images/mon-5.png') {
-                    final = 5;
-                } else if (src == 'images/mon-6.png') {
-                    final = 6;
-                }
-                $('.game').hide();
-                $('.lose').show();
-                $('.lose .final-img>img').attr('src', 'images/lose-' + final + '.png');
-            }
-        }, 10) // 每10ms掃描一次怪物位置
-
-        setInterval(function () {
-            let monX = $('.mon-x').offset().left; // 橫著跑的怪物
-            if (monX > windowHalfWidth1 && monX < windowHalfWidth2) { //當怪物跑到中間的時候
-                monMove = false; // 怪物移動變數為假
-                gameRunning = false;
-                src = $('.mon-x img').attr('src');
-                if (src == 'images/mon-1.png') {
-                    final = 1;
-                } else if (src == 'images/mon-2.png') {
-                    final = 2;
-                } else if (src == 'images/mon-3.png') {
-                    final = 3;
-                } else if (src == 'images/mon-4.png') {
-                    final = 4;
-                } else if (src == 'images/mon-5.png') {
-                    final = 5;
-                } else if (src == 'images/mon-6.png') {
-                    final = 6;
-                }
-                $('.game').hide();
-                $('.lose').show();
-                $('.lose .final-img>img').attr('src', 'images/lose-' + final + '.png');
-            }
-            console.log(monMove)
-        }, 10) // 每10ms掃描一次怪物位置
-
     }
-    $('.restart-btn').on('click', function () {
-        location.reload();
-    })
+
+    setInterval(function () {
+        let monY = $('.mon-y').css('top'); // 縱著跑的怪物
+        if (monY > 49.5 && monY < 50.5) { //當怪物跑到中間的時候
+            monMove = false; // 怪物移動變數為假
+            // gameRunning = false;
+            // src = $('.mon-y img').attr('src');
+            // if (src == 'images/mon-1.png') {
+            //     final = 1;
+            // } else if (src == 'images/mon-2.png') {
+            //     final = 2;
+            // } else if (src == 'images/mon-3.png') {
+            //     final = 3;
+            // } else if (src == 'images/mon-4.png') {
+            //     final = 4;
+            // } else if (src == 'images/mon-5.png') {
+            //     final = 5;
+            // } else if (src == 'images/mon-6.png') {
+            //     final = 6;
+            // }
+            // $('.game').hide();
+            // $('.lose').show();
+            // $('.lose .final-img img').attr('src', 'images/lose-' + final + '.png');
+        }
+    }, 10) // 每10ms掃描一次怪物位置
+
+    setInterval(function () {
+        let monX = $('.mon-x').css('left'); // 橫著跑的怪物
+        if (monX > 49.5 && monX < 50.5) { //當怪物跑到中間的時候
+            monMove = false; // 怪物移動變數為假
+            // gameRunning = false;
+            // src = $('.mon-x img').attr('src');
+            // if (src == 'images/mon-1.png') {
+            //     final = 1;
+            // } else if (src == 'images/mon-2.png') {
+            //     final = 2;
+            // } else if (src == 'images/mon-3.png') {
+            //     final = 3;
+            // } else if (src == 'images/mon-4.png') {
+            //     final = 4;
+            // } else if (src == 'images/mon-5.png') {
+            //     final = 5;
+            // } else if (src == 'images/mon-6.png') {
+            //     final = 6;
+            // }
+            // $('.game').hide();
+            // $('.lose').show();
+            // $('.lose .final-img img').attr('src', 'images/lose-' + final + '.png');
+        }
+        console.log(monMove)
+    }, 10) // 每10ms掃描一次怪物位置
 
     // Mon
     $('.mon').on('click', function () {
         $(this).hide().stop(); // 當怪物被點到，該怪物會被隱藏然後停止動畫。
         score = score + 5; // 加5分
-        if (score >= 200) {
+        if (score >= 20) {
             monMove = false;
             gameRunning = false;
             $('.game').hide();
@@ -204,4 +203,15 @@ $(function () {
         $('.header--score').text(score); // 把分數寫進
     })
 
+
+
+    $('.restart-btn').on('click', function () {
+        $('.final').hide();
+        $('.game').show();
+        score = 0;
+        $('.header--score').text(score); // 把分數寫進
+        monMove = true;
+        gameRunning = true;
+        game();
+    })
 })
